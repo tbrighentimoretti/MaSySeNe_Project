@@ -15,8 +15,7 @@ if ($userVerificationBoolean === true) {
 }
 
 // remove cookie sessions older than 10 days
-
-$sql = 'SELECT * FROM shops WHERE created_at < NOW() - INTERVAL 10 DAY';
+$sql = 'DELETE FROM user_cookie_session WHERE created_at < NOW() - INTERVAL 10 DAY';
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 

@@ -15,7 +15,7 @@
 
     <h1>Registration</h1>
 
-    <?php if ( verifyUserCookieSession() === true ) : ?>
+    <?php if ( !empty($_COOKIE['user']) && !empty($_COOKIE['token']) ) : ?>
 
         <div id="already-logged-in">
 

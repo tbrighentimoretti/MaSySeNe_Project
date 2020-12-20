@@ -1,6 +1,6 @@
 <?php 
 
-$dsn = 'mysql:host=localhost;dbname=blog';
+$dsn = 'mysql:host=localhost; dbname=blog';
 $user = 'root';
 $pwd = 'root';
 $PDO = new PDO ($dsn, $user, $pwd);
@@ -120,7 +120,7 @@ function createUserCookieSession($username) {
 
 function verifyUserCookieSession() {
 
-    if ( isset($_COOKIE['user']) && isset($_COOKIE['csrf_token']) ) {
+    if ( isset($_COOKIE['user']) && isset($_COOKIE['csrf_token']) && isset($_COOKIE['token']) ) {
 
         $username = $_COOKIE['user'];
         $cookieToken = $_COOKIE['token'];
@@ -146,10 +146,6 @@ function verifyUserCookieSession() {
         }
 
     } else {
-
-        setcookie('user', NULL, time() - 3600);
-        setcookie('csrf_token', NULL, time() - 3600);
-        setcookie('token', NULL, time() - 3600);
 
         return false;
     }
@@ -193,11 +189,5 @@ function getClientIP() {
 function cleanString($notCleanedString) {
 
     return filter_var($notCleanedString, FILTER_SANITIZE_STRING);
-
-}
-
-function getCleanedString($notCleanedString) {
-
-    return stripslashes($notCleanedString);
 
 }

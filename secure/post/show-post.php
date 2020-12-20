@@ -16,7 +16,7 @@ if ( !empty($_GET['id']) && getSinglePost($_GET['id']) !== false ) :
 
 <div id="post-page-title-container">
 
-    <h1><?php echo $postQueryInformation['title']; ?></h1>
+    <h1><?php echo $postQueryInformation['title'] . ' by ' . $postQueryInformation['username']; ?></h1>
 
 </div>
 

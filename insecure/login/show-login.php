@@ -22,7 +22,7 @@
 
     <h1>Login</h1>
 
-    <?php if ( $userVerificationBoolean === true || verifyUserCookieSession() === true ) : ?>
+    <?php if ( ( isset($userVerificationBoolean) && $userVerificationBoolean === true ) || ( isset($_COOKIE['user']) && isset($_COOKIE['token']) ) ) : ?>
 
         <div id="already-logged-in">
 
